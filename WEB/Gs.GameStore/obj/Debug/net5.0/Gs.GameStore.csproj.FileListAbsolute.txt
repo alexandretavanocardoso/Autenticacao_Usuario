@@ -343,7 +343,6 @@ C:\Users\usuario\Desktop\GameStore\WEB\Gs.GameStore\obj\Debug\net5.0\Gs.GameStor
 C:\Users\usuario\Desktop\GameStore\WEB\Gs.GameStore\obj\Debug\net5.0\Razor\Views\Authentication\Login.cshtml.g.cs
 C:\Users\usuario\Desktop\GameStore\WEB\Gs.GameStore\obj\Debug\net5.0\Razor\Views\Authentication\Register.cshtml.g.cs
 C:\Users\usuario\Desktop\GameStore\WEB\Gs.GameStore\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\usuario\Desktop\GameStore\WEB\Gs.GameStore\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\usuario\Desktop\GameStore\WEB\Gs.GameStore\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\usuario\Desktop\GameStore\WEB\Gs.GameStore\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\usuario\Desktop\GameStore\WEB\Gs.GameStore\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -357,3 +356,4 @@ C:\Users\usuario\Desktop\GameStore\WEB\Gs.GameStore\obj\Debug\net5.0\Gs.GameStor
 C:\Users\usuario\Desktop\GameStore\WEB\Gs.GameStore\obj\Debug\net5.0\ref\Gs.GameStore.dll
 C:\Users\usuario\Desktop\GameStore\WEB\Gs.GameStore\obj\Debug\net5.0\Gs.GameStore.pdb
 C:\Users\usuario\Desktop\GameStore\WEB\Gs.GameStore\obj\Debug\net5.0\Gs.GameStore.genruntimeconfig.cache
+C:\Users\usuario\Desktop\GameStore\WEB\Gs.GameStore\obj\Debug\net5.0\Razor\Views\Admin\Index.cshtml.g.cs

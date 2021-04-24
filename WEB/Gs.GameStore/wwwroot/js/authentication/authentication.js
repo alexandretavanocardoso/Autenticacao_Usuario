@@ -54,7 +54,11 @@ function onClick_Registro() {
             });
         },
         error: function (err) {
-            tata.error('Erro', 'Erro do servidor!');
+            tata.error('Erro', err.responseText, {
+                duration: 5000,
+                position: "tl",
+                animate: 'slide'
+            });
         }
     });
 }
@@ -88,7 +92,7 @@ function onClick_Login() {
             location.href = "https://localhost:44342/";
         },
         error: function (err) {
-            tata.error('Erro', err + '!', {
+            tata.error('Erro', err.responseText, {
                 duration: 5000,
                 position: "tl",
                 animate: 'slide'

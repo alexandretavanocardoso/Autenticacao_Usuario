@@ -37,6 +37,13 @@ namespace GS.Api.Controllers.Identity
         [HttpPost("createAuthorization")]
         public async Task<ActionResult> CriarAutenticacao(UserRegister userRegistro)
         {
+            var emailExistente = _authorizationServices.ValidarSeExisteEmailAsync(userRegistro.Email);
+
+            if(emailExistente == true)
+            {
+                return CustomResponse("Email ja esta sendo usado no sistema!");
+            }
+
             if (!ModelState.IsValid)
                 return CustomResponse(ModelState);
 
@@ -77,17 +84,22 @@ namespace GS.Api.Controllers.Identity
 
             if (logarUsuario.IsLockedOut)
             {
-                AdicionarErroProcessamento("Usuário bloqueado !");
+                return CustomResponse("Usuário bloqueado!");
             }
 
-            AdicionarErroProcessamento("Usuário ou Senha Incorretas");
-            return CustomResponse();
+            return CustomResponse("Usuário ou Senha Incorretas!");
         }
 
         [HttpGet("recuperarListaUsuario")]
         public async Task<ActionResult<UserLoginQuery>> RecuperarListaUsuario(string email)
         {
-            return CustomResponse(_authorizationServices.RecuperarListaUsuarioAsync(email));
+            return CustomResponse(await _authorizationServices.RecuperarListaUsuarioAsync(email));
+        }
+
+        [HttpDelete("deletarContaUsuario")]
+        public async Task<ActionResult> DeletarContaUsuario(string email)
+        {
+            return CustomResponse();
         }
 
         private async Task<UserResultLogin> GerarJwt(string email)

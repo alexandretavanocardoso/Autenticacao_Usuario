@@ -1,5 +1,9 @@
 ﻿$(document).ready(function () {
     carregarMenu();
+
+    $("#dropdown").click(function () {
+        $("#dropUsuario").slideToggle("fast");
+    });
 });
 
 function carregarMenu() {
@@ -13,9 +17,9 @@ function carregarMenu() {
         url: urlMenu,
         data: JSON.stringify({}),
         success: function (result) {
-            if (result.result != null) {
-                if (result.result.email != null) {
-                    carregarMenuLogado(result.result.email);
+            if (result != null) {
+                if (result.email != null) {
+                    carregarMenuLogado(result.email);
                 }
                 tata.success('Sucesso', 'Logado com Sucesso!', {
                     duration: 5000,
@@ -32,18 +36,16 @@ function carregarMenu() {
 function carregarMenuLogado(usuario) {
     var html = "";
 
-    html += '<ul class="navbar-nav flex-grow-1" style="display: flex; justify-content: flex-end;"> '
-    html += '   <li class="nav-item" style="display: flex; margin-right: 8px;"> '
-    html += '       <i style="margin-top: 12px;" class="fas fa-user"></i> '
-    html += '       <a style="cursor: pointer;" class="nav-link text-dark">Olá ' + usuario + '</a> '
-    html += '   </li> '
-    html += '   <li class="nav-item" style="display: flex;"> '
-    html += '       <i style="margin-top: 12px;" class="fas fa-shopping-cart"></i> '
-    html += '       <a style="cursor: pointer;" onclick="onClick_Logout()" class="nav-link text-dark">Sair</a> '
-    html += '   </li> '
-    html += '</ul> '
+    html += '<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">';
+    html += '   Olá  ' + usuario;
+    html += '</a>';
+    html +='<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="dropUsuario">'
+    html += '   <li><a class="dropdown-item" href="#" style="cursor: pointer;" onclick="onClick_DeletarConta(' + usuario +')">Deletar conta</a></li>'
+    html +='    <li><a class="dropdown-item" href="#" style="cursor: pointer;" onclick="onClick_Logout()">Sair</a></li>'
+    html += '</ul>'
 
-    $("#Menu").append(html);
+    $("#dropdown").append(html);
+    $("#dropdown").css("display", "inline");
 }
 
 function carregarMenuDesLogado() {
@@ -72,5 +74,30 @@ function onClick_Logout() {
         duration: 5000,
         position: "tl",
         animate: 'slide'
+    });
+}
+
+function onClick_DeletarConta(email) {
+    $.when("Excluir conta", "Deseja excluir sua conta? ").then(function(confirmou) {
+        if(confirmou) {
+            $.ajax({
+                type: "DELETE",
+                url: "https://localhost:44389/api/Authorization/deletarContaUsuario?email=" + localStorage.getItem("email"),
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify({}),
+                success: function() {
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("email");
+                    carregarMenu();
+                    location.href = "https://localhost:44342/Authentication/Login";
+                    tata.success('Sucesso', 'Conta deletada com sucesso!', {
+                        duration: 5000,
+                        position: "tl",
+                        animate: 'slide'
+                    });
+                }
+            });
+        }
     });
 }

@@ -18,5 +18,10 @@ namespace GS.Api.Bussines.Services.Authorization
         {
             return await _authorizationRepository.RecuperarListaUsuario(email);
         }
+
+        public bool ValidarSeExisteEmailAsync(string email)
+        {
+            return _authorizationRepository.ValidarSeExisteEmail(email);
+        }
     }
 }

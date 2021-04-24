@@ -37,5 +37,26 @@ namespace GS.Api.Bussines.Repositorys.Authorization
 
             return null;
         }
+
+        public bool ValidarSeExisteEmail(string email) {
+            
+            OpenConnection();
+
+            Cmd = new SqlCommand("SELECT * FROM ASPNETUSERS WHERE USERNAME = @email", Con);
+            Cmd.Parameters.AddWithValue("@email", email);
+            Dr = Cmd.ExecuteReader();
+
+            if (Dr.Read())
+            {
+                UserLoginQuery usuario = new UserLoginQuery();
+                usuario.Email = Convert.ToString(Dr["Email"]);
+
+                return true;
+            }
+
+            CloseConnection();
+
+            return false;
+        }
     }
 }
