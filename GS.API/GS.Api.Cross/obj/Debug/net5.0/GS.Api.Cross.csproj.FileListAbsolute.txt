@@ -1,0 +1,16 @@
+C:\Users\usuario\Desktop\GameStore\GS.API\GS.Api.Cross\bin\Debug\net5.0\GS.Api.Cross.exe
+C:\Users\usuario\Desktop\GameStore\GS.API\GS.Api.Cross\bin\Debug\net5.0\GS.Api.Cross.deps.json
+C:\Users\usuario\Desktop\GameStore\GS.API\GS.Api.Cross\bin\Debug\net5.0\GS.Api.Cross.runtimeconfig.json
+C:\Users\usuario\Desktop\GameStore\GS.API\GS.Api.Cross\bin\Debug\net5.0\GS.Api.Cross.runtimeconfig.dev.json
+C:\Users\usuario\Desktop\GameStore\GS.API\GS.Api.Cross\bin\Debug\net5.0\GS.Api.Cross.dll
+C:\Users\usuario\Desktop\GameStore\GS.API\GS.Api.Cross\bin\Debug\net5.0\ref\GS.Api.Cross.dll
+C:\Users\usuario\Desktop\GameStore\GS.API\GS.Api.Cross\bin\Debug\net5.0\GS.Api.Cross.pdb
+C:\Users\usuario\Desktop\GameStore\GS.API\GS.Api.Cross\obj\Debug\net5.0\GS.Api.Cross.csprojAssemblyReference.cache
+C:\Users\usuario\Desktop\GameStore\GS.API\GS.Api.Cross\obj\Debug\net5.0\GS.Api.Cross.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\usuario\Desktop\GameStore\GS.API\GS.Api.Cross\obj\Debug\net5.0\GS.Api.Cross.AssemblyInfoInputs.cache
+C:\Users\usuario\Desktop\GameStore\GS.API\GS.Api.Cross\obj\Debug\net5.0\GS.Api.Cross.AssemblyInfo.cs
+C:\Users\usuario\Desktop\GameStore\GS.API\GS.Api.Cross\obj\Debug\net5.0\GS.Api.Cross.csproj.CoreCompileInputs.cache
+C:\Users\usuario\Desktop\GameStore\GS.API\GS.Api.Cross\obj\Debug\net5.0\GS.Api.Cross.dll
+C:\Users\usuario\Desktop\GameStore\GS.API\GS.Api.Cross\obj\Debug\net5.0\ref\GS.Api.Cross.dll
+C:\Users\usuario\Desktop\GameStore\GS.API\GS.Api.Cross\obj\Debug\net5.0\GS.Api.Cross.pdb
+C:\Users\usuario\Desktop\GameStore\GS.API\GS.Api.Cross\obj\Debug\net5.0\GS.Api.Cross.genruntimeconfig.cache

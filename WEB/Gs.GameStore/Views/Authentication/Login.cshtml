@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/css/authentication/authentication.css" rel="stylesheet" />
+}
+
+
+<div class="container">
+    <div class="formLogin">
+        <div id="erroLogin">
+
+        </div>
+        <form method="post">
+            <div class="mb-3">
+                <label for="txtEmailLogin" class="form-label">Email: </label>
+                <input type="email" class="form-control" id="txtEmailLogin" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="txtSenhaLogin" class="form-label">Senha: </label>
+                <input type="password" class="form-control" id="txtSenhaLogin">
+            </div>
+            <a style="cursor: pointer; color: white;" onclick="onClick_Login()" class="btn btn-primary">Entrar</a>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/js/authentication/authentication.js"></script>
+}

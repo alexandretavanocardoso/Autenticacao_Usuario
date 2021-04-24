@@ -1,0 +1,156 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.SqlClient; //acesso ao sqlserver..
+using DAL.Entity; //namespace das classes de entidade..
+
+namespace DAL.Persistence
+{
+    /// <summary>
+    /// Classe de persistencia para a entidade Cliente
+    /// </summary>
+    public class ClienteDal : Conexao
+    {
+        public void Insert(Cliente c)
+        {
+            try
+            {
+                OpenConnection(); //abrir conexão..
+                Cmd = new SqlCommand("insert into Cliente(Nome, Email, Sexo, DataCadastro) values(@v1, @v2, @v3, GetDate())", Con);
+                Cmd.Parameters.AddWithValue("@v1", c.Nome);
+                Cmd.Parameters.AddWithValue("@v2", c.Email);
+                Cmd.Parameters.AddWithValue("@v3", c.Sexo.ToString());
+                Cmd.ExecuteNonQuery(); //executar..
+            }
+            catch (Exception e)
+            {
+                //lançar uma exceção para o projeto principal..
+                throw new Exception("Erro ao inserir Cliente: " + e.Message);
+            }
+            finally
+            {
+                CloseConnection(); //fechar conexão..
+            }
+        }
+
+        public void Update(Cliente c)
+        {
+            try
+            {
+                OpenConnection(); //abrir conexao
+                Cmd = new SqlCommand("update Cliente set Nome = @v1, Email = @v2, Sexo = @v3 where IdCliente = @v4", Con);
+                Cmd.Parameters.AddWithValue("@v1", c.Nome);
+                Cmd.Parameters.AddWithValue("@v2", c.Email);
+                Cmd.Parameters.AddWithValue("@v3", c.Sexo.ToString());
+                Cmd.Parameters.AddWithValue("@v4", c.IdCliente);
+                Cmd.ExecuteNonQuery(); //executar
+            }
+            catch(Exception e)
+            {
+                //lançar exceção..
+                throw new Exception("Erro ao atuaalizar Cliente: " + e.Message);
+            }
+            finally
+            {
+                CloseConnection(); //fechar conexao
+            }
+        }
+
+        public void Delete(int IdCliente)
+        {
+            try
+            {
+                OpenConnection(); //abrir conexão..
+                Cmd = new SqlCommand("delete from Cliente where IdCliente = @v1", Con);
+                Cmd.Parameters.AddWithValue("@v1", IdCliente);
+                Cmd.ExecuteNonQuery(); //executar..
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Erro ao excluir Cliente: " + e.Message);
+            }
+            finally
+            {
+                CloseConnection(); //fechar conexão..
+            }
+        }
+
+
+        public Cliente FindById(int IdCliente)
+        {
+            try
+            {
+                OpenConnection(); //abrir conexão..
+
+                Cmd = new SqlCommand("select * from Cliente where IdCliente = @v1", Con);
+                Cmd.Parameters.AddWithValue("@v1", IdCliente);
+                Dr = Cmd.ExecuteReader();
+
+                //verificar se o DataReader obteve algum registro..
+                if(Dr.Read()) //verificando se o DataReader obteve algum registro..
+                {
+                    Cliente c = new Cliente(); //classe de entidade...
+                    c.IdCliente = Convert.ToInt32(Dr["IdCliente"]);
+                    c.Nome = Convert.ToString(Dr["Nome"]);
+                    c.Email = Convert.ToString(Dr["Email"]);
+                    c.Sexo = (Sexo) Enum.Parse(typeof(Sexo), Convert.ToString(Dr["Sexo"]));
+                    c.DataCadastro = Convert.ToDateTime(Dr["DataCadastro"]);
+
+                    return c; //retornar o cliente..
+                }
+                else
+                {
+                    return null; //retornar vazio..
+                }
+            }
+            catch(Exception e)
+            {
+                //lançar exceção..
+                throw new Exception("Erro ao obter Cliente: " + e.Message);
+            }
+            finally
+            {
+                CloseConnection(); //fechar conexao..
+            }
+        }
+
+        public List<Cliente> FindAll()
+        {
+            try
+            {
+                OpenConnection(); //abrir conexão..
+                Cmd = new SqlCommand("select * from Cliente", Con);
+                Dr = Cmd.ExecuteReader(); //executa a consulta e le os registros..
+
+                List<Cliente> lista = new List<Cliente>(); //lista vazia..
+
+                //enquanto houver registros na consulta..
+                while(Dr.Read())
+                {
+                    Cliente c = new Cliente();
+
+                    c.IdCliente = Convert.ToInt32(Dr["IdCliente"]);
+                    c.Nome = Convert.ToString(Dr["Nome"]);
+                    c.Email = Convert.ToString(Dr["Email"]);
+                    c.Sexo = (Sexo) Enum.Parse(typeof(Sexo), Convert.ToString(Dr["Sexo"]));
+                    c.DataCadastro = Convert.ToDateTime(Dr["Datacadastro"]);
+
+                    lista.Add(c); //adicionar o cliente dentro da lista..
+                }
+
+                return lista; //retornar a lista..
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Erro ao listar Clientes: " + e.Message);
+            }
+            finally
+            {
+                CloseConnection(); //fechar conexão..
+            }
+        }
+
+    }
+}

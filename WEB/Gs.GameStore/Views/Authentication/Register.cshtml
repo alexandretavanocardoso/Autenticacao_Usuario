@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Registro";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link href="~/css/authentication/authentication.css" rel="stylesheet" />
+}
+
+<div class="container">
+    <div class="formRegistro">
+        <div id="erroRegister"></div>
+        <form method="post">
+            <div class="mb-3">
+                <label for="txtEmailRegistro" class="form-label">Email: </label>
+                <input type="email" class="form-control" id="txtEmailRegistro" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="txtSenhaRegistro" class="form-label">Senha: </label>
+                <input type="password" class="form-control" id="txtSenhaRegistro">
+            </div>
+            <div class="mb-3">
+                <label for="txtConfirmarSenha" class="form-label">Confirmar Senha: </label>
+                <input type="password" class="form-control" id="txtConfirmarSenha">
+            </div>
+            <a style="cursor: pointer; color: white;" onclick="onClick_Registro()" class="btn btn-primary">Entrar</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/authentication/authentication.js"></script>
+}

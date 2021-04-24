@@ -1,0 +1,30 @@
+﻿*{
+    box-sizing: border-box;
+}
+
+.formLogin{
+    margin: 0 auto;
+    width: 400px;
+}
+
+.formRegistro {
+    margin: 0 auto;
+    width: 400px;
+}
+
+.erroAutorizathion {
+    margin-bottom: 20px;
+    height: auto;
+    background-color: #9a1515;
+    border: 2px solid #bb2a2a;
+    padding: 40px 0px 40px 0px;
+}
+
+.erroAutorizathion p{
+    vertical-align: middle;
+    color: white;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
