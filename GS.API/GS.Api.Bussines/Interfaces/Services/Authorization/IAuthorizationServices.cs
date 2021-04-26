@@ -7,5 +7,6 @@ namespace GS.Api.Bussines.Interfaces.Services.Authorization
     {
         Task<UserLoginQuery> RecuperarListaUsuarioAsync(string email);
         bool ValidarSeExisteEmailAsync(string email);
+        Task<bool> DeletarContaUsuarioAsync(string email);
     }
 }

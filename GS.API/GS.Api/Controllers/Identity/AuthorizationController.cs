@@ -97,9 +97,9 @@ namespace GS.Api.Controllers.Identity
         }
 
         [HttpDelete("deletarContaUsuario")]
-        public async Task<ActionResult> DeletarContaUsuario(string email)
+        public async Task<ActionResult<bool>> DeletarContaUsuario(string email)
         {
-            return CustomResponse();
+            return CustomResponse(await _authorizationServices.DeletarContaUsuarioAsync(email));
         }
 
         private async Task<UserResultLogin> GerarJwt(string email)

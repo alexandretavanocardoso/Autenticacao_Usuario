@@ -7,5 +7,6 @@ namespace GS.Api.Bussines.Interfaces.Repositorys.Authorization
     {
         Task<UserLoginQuery> RecuperarListaUsuario(string email);
         bool ValidarSeExisteEmail(string email);
+        Task<bool> DeletarContaUsuario(string email);
     }
 }

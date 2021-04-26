@@ -40,7 +40,7 @@ function carregarMenuLogado(usuario) {
     html += '   Olá  ' + usuario;
     html += '</a>';
     html +='<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="dropUsuario">'
-    html += '   <li><a class="dropdown-item" href="#" style="cursor: pointer;" onclick="onClick_DeletarConta(' + usuario +')">Deletar conta</a></li>'
+    html += '   <li><a class="dropdown-item" href="#" style="cursor: pointer;" onclick="onClick_DeletarConta(' + usuario+')">Deletar Conta</a></li>'
     html +='    <li><a class="dropdown-item" href="#" style="cursor: pointer;" onclick="onClick_Logout()">Sair</a></li>'
     html += '</ul>'
 
@@ -78,25 +78,21 @@ function onClick_Logout() {
 }
 
 function onClick_DeletarConta(email) {
-    $.when("Excluir conta", "Deseja excluir sua conta? ").then(function(confirmou) {
-        if(confirmou) {
-            $.ajax({
-                type: "DELETE",
-                url: "https://localhost:44389/api/Authorization/deletarContaUsuario?email=" + localStorage.getItem("email"),
-                dataType: "json",
-                contentType: "application/json",
-                data: JSON.stringify({}),
-                success: function() {
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("email");
-                    carregarMenu();
-                    location.href = "https://localhost:44342/Authentication/Login";
-                    tata.success('Sucesso', 'Conta deletada com sucesso!', {
-                        duration: 5000,
-                        position: "tl",
-                        animate: 'slide'
-                    });
-                }
+    $.ajax({
+        type: "DELETE",
+        url: "https://localhost:44389/api/Authorization/deletarContaUsuario?email=" + localStorage.getItem("email"),
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify({}),
+        success: function () {
+            localStorage.removeItem("token");
+            localStorage.removeItem("email");
+            carregarMenu();
+            location.href = "https://localhost:44342/Authentication/Login";
+            tata.success('Sucesso', 'Conta deletada com sucesso!', {
+                duration: 5000,
+                position: "tl",
+                animate: 'slide'
             });
         }
     });

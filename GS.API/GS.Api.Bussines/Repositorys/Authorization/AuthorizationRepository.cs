@@ -58,5 +58,28 @@ namespace GS.Api.Bussines.Repositorys.Authorization
 
             return false;
         }
+
+        public async Task<bool> DeletarContaUsuario(string email)
+        {
+            OpenConnection();
+
+            Cmd = new SqlCommand("DELETE FROM ASPNETUSERS WHERE USERNAME = @email", Con);
+            Cmd.Parameters.AddWithValue("@email", email);
+            Dr = Cmd.ExecuteReader();
+
+            //verificar se o DataReader obteve algum registro..
+            if (Dr.Read())
+            {
+                UserLoginQuery usuario = new UserLoginQuery();
+                usuario.Email = Convert.ToString(Dr["Email"]);
+
+                return true;
+            }
+
+            CloseConnection();
+
+            return false;
+        }
+
     }
 }

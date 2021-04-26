@@ -23,5 +23,10 @@ namespace GS.Api.Bussines.Services.Authorization
         {
             return _authorizationRepository.ValidarSeExisteEmail(email);
         }
+
+        public async Task<bool> DeletarContaUsuarioAsync(string email)
+        {
+            return await _authorizationRepository.DeletarContaUsuario(email);
+        }
     }
 }
